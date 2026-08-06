@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="MAGneT: Coordinated Multi-Agent Generation of Synthetic Multi-Turn Mental Health Counseling Sessions">
+    <meta property="og:title" content="MAGneT"/>
+    <meta property="og:description" content="Coordinated Multi-Agent Generation of Synthetic Multi-Turn Mental Health Counseling Sessions"/>
+    <meta property="og:image" content="static/images/figure1-overview.png"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="keywords" content="counseling, mental health, synthetic data, LLM, multi-agent, CBT, MAGneT">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MAGneT</title>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h2 class="title is-2 publication-title">MAGneT</h2>
+                    <h3 class="title is-4 publication-title" style="font-weight: 400;">
+                        Coordinated Multi-Agent Generation of Synthetic Multi-Turn Mental Health Counseling Sessions
+                    </h3>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><a href="https://jitaishik.github.io/" target="_blank">Aishik Mandal</a><sup>1,2</sup>,</span>
+                        <span class="author-block"><a href="https://tanmoychak.com/" target="_blank">Tanmoy Chakraborty</a><sup>3,4</sup>,</span>
+                        <span class="author-block"><a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/head_ukp/index.en.jsp" target="_blank">Iryna Gurevych</a><sup>1,2</sup></span>
+                    </div>
+
+                    <div class="is-size-6 publication-authors">
+                        <span class="author-block"><sup>1</sup>Ubiquitous Knowledge Processing Lab (UKP Lab), Department of Computer Science and Hessian Center for AI (hessian.AI), <a href="https://www.tu-darmstadt.de/" target="_blank">Technische Universität Darmstadt</a></span><br>
+                        <span class="author-block"><sup>2</sup>National Research Center for Applied Cybersecurity ATHENE, Germany</span><br>
+                        <span class="author-block"><sup>3</sup>Department of Electrical Engineering, Indian Institute of Technology Delhi, India</span><br>
+                        <span class="author-block"><sup>4</sup>Yardi School of Artificial Intelligence, Indian Institute of Technology Delhi, India</span>
+                    </div>
+
+                    <div class="is-size-5 publication-venue" style="margin-top: 0.75rem;">arXiv Preprint 2025</div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                <a href="https://arxiv.org/pdf/2509.04183" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+                            <span class="link-block">
+                <a href="https://github.com/UKPLab/arxiv2025-magnet" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+                            <span class="link-block">
+                <a href="https://arxiv.org/abs/2509.04183" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+                            <span class="link-block">
+                <a href="https://huggingface.co/collections/UKPLab/magnet" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <span>Data (HuggingFace)</span>
+              </a>
+            </span>
+                            <span class="link-block">
+                <a href="https://tudatalib.ulb.tu-darmstadt.de/handle/tudatalib/5072" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <span>Data (TUdatalib)</span>
+              </a>
+            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Abstract -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h3 class="title is-3">Abstract</h3>
+                <div class="content has-text-justified">
+                    <p>
+                        The growing demand for scalable psychological counseling highlights the need for
+                        fine-tuning open-source Large Language Models (LLMs) with high-quality, privacy-compliant
+                        data, yet such data remains scarce. Here we introduce <strong>MAGneT</strong>, a novel
+                        multi-agent framework for synthetic psychological counseling session generation that
+                        decomposes counselor response generation into coordinated sub-tasks handled by
+                        specialized LLM agents, each modeling a key psychological technique. Unlike prior
+                        single-agent approaches, MAGneT better captures the structure and nuance of real
+                        counseling. We further address inconsistencies in prior evaluation protocols by
+                        proposing a unified evaluation framework integrating diverse automatic and expert
+                        metrics, expanding expert evaluation from four aspects of counseling in previous works
+                        to nine aspects. Empirically, MAGneT significantly outperforms existing methods in
+                        quality, diversity, and therapeutic alignment, improving general counseling skills by
+                        3.2% and CBT-specific skills by 4.3% on average on the cognitive therapy rating scale
+                        (CTRS). Experts prefer MAGneT-generated sessions in 77.2% of cases on average across all
+                        nine aspects. Moreover, fine-tuning an open-source model on MAGneT-generated sessions
+                        shows better performance, with improvements of 6.3% on general counseling skills and
+                        7.3% on CBT-specific skills on average on CTRS over those fine-tuned with sessions
+                        generated by baseline methods.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-left mb-6">We present MAGneT!</h3>
+        <figure class="paper-figure mb-6">
+            <img src="static/images/figure1-overview.png" alt="Overview of MAGneT: a Counselor Agent composed of a CBT Agent, five specialized response agents (Reflection, Questioning, Solutions, Normalizing, Psycho-education), a Technique Agent, and a Response Generator, role-playing against a Client Agent seeded with an intake form and attitude." style="max-width: 720px; width: 100%; height: auto;">
+        </figure>
+        <div class="content has-text-left">
+            <p>
+                <strong>MAGneT</strong> generates <span class="highlight">clinically grounded, multi-turn synthetic
+                counseling sessions</span> by decomposing the counselor into a coordinated ensemble of LLM agents
+                instead of asking a single model to "be a counselor."
+            </p>
+            <h4>🧩 Five Specialists, One Voice</h4>
+            <p>
+                Five agents each focus on one core counseling technique: Reflection, Questioning, Solution
+                provision, Normalization, and Psycho-education. Each generates a candidate utterance, and a
+                Response Generator fuses them into a single, coherent counselor turn.
+            </p>
+            <h4>🧠 CBT-Grounded, Turn-Level Control</h4>
+            <p>
+                A CBT Agent produces a session-level treatment plan once, at the start of the session. A
+                Technique Agent then reads that plan alongside the dialogue history to dynamically select which
+                of the five specialists to activate on every turn.
+            </p>
+            <h4>🏅 Expert-Validated Gains</h4>
+            <p>
+                Seven licensed clinical psychologists compared MAGneT sessions against the strongest prior
+                baseline and preferred MAGneT in <span class="highlight">77.2% of cases on average across nine
+                counseling aspects</span>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Method / dataset details -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-left mb-6">How MAGneT generates a session</h3>
+        <div class="container is-max-desktop mb-6">
+            <div class="content has-text-left">
+                <p><strong>(1)</strong> A <strong>CBT Agent</strong> reads the client's intake form and opening
+                    turn and produces a session-level counseling plan, generated once per session.</p>
+                <p><strong>(2)</strong> On every turn, a <strong>Technique Agent</strong> reads the plan and the
+                    dialogue history so far and selects a subset of the five <strong>specialized response
+                    agents</strong> to activate for that turn.</p>
+                <p><strong>(3)</strong> The activated agents each generate a candidate counselor utterance,
+                    which a <strong>Response Generator</strong> fuses into a single, coherent counselor turn.</p>
+                <p><strong>(4)</strong> A <strong>Client Agent</strong>, seeded with a structured intake form and
+                    one of three fixed attitudes (positive, neutral, negative), replies, and the updated dialogue
+                    history feeds back into the Technique Agent for the next turn. Sessions run for 40 turns.</p>
+            </div>
+            <ul class="chip-list">
+                <li>Reflection</li>
+                <li>Questioning</li>
+                <li>Solution provision</li>
+                <li>Normalization</li>
+                <li>Psycho-education</li>
+            </ul>
+        </div>
+        <div class="container is-max-desktop mb-6">
+            <h4 class="title is-4 has-text-left mb-6">
+                A unified evaluation protocol, expanded from four expert-rated aspects to nine
+            </h4>
+            <div class="content has-text-left">
+                <p>
+                    Prior synthetic-counseling papers each reported a different subset of metrics, one used
+                    CTRS, another WAI, another PANAS, making methods difficult to compare head to head. MAGneT's
+                    evaluation combines Diversity (Distinct-<em>n</em>, EAD), CTRS, WAI, and PANAS with expert
+                    judgment on <span class="highlight">comprehensiveness, professionalism, authenticity, safety,
+                    content naturalness, directiveness, exploratoriness, supportiveness, and
+                    expressiveness</span>.
+                </p>
+            </div>
+            <div class="results-table-wrapper">
+                <table class="table is-bordered">
+                    <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>CBT-grounded</th>
+                        <th>Multi-agent</th>
+                        <th>Diversity</th>
+                        <th>CTRS</th>
+                        <th>WAI</th>
+                        <th>PANAS</th>
+                        <th>Expert Eval.</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>SMILE</td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+                    <tr><td>Psych8k</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+                    <tr><td>CPsyCoun</td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+                    <tr><td>Qiu and Lan (2026)</td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>✓</td><td>✗</td><td>1 aspect</td></tr>
+                    <tr><td>CACTUS</td><td>✓</td><td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>✓</td><td>4 aspects</td></tr>
+                    <tr class="best-row"><td><strong>MAGneT (ours)</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td><td><strong>✓</strong></td><td><strong>9 aspects</strong></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Diversity -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-left mb-6">MAGneT produces more lexically diverse sessions</h3>
+        <div class="content has-text-left">
+            <p>
+                We compare the lexical diversity of sessions generated by Psych8k, CACTUS, and MAGneT using
+                Distinct-<em>n</em> scores for <em>n</em> in {1, 2, 3} and the Expectation-Adjusted Distinct
+                (EAD) score, which corrects Distinct-<em>n</em>'s bias toward shorter sequences.
+            </p>
+        </div>
+        <div class="results-table-wrapper">
+            <table class="table is-bordered">
+                <thead>
+                <tr><th>Method</th><th>Distinct-1</th><th>Distinct-2</th><th>Distinct-3</th><th>EAD</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>Psych8k</td><td>0.0044</td><td>0.0570</td><td>0.1604</td><td>0.0546</td></tr>
+                <tr><td>CACTUS</td><td>0.0048</td><td>0.0619</td><td>0.1733</td><td>0.0537</td></tr>
+                <tr class="best-row"><td><strong>MAGneT</strong></td><td><strong>0.0050</strong></td><td><strong>0.0685</strong></td><td><strong>0.2009</strong></td><td><strong>0.0562</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content">
+            <p>
+                MAGneT achieves the highest score on every diversity metric, indicating that decomposing
+                generation across specialized agents produces richer, less repetitive dialogue than a
+                single-agent counselor.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Counseling quality -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-left mb-6">MAGneT sessions score higher on counseling quality and alliance</h3>
+        <div class="content has-text-left">
+            <p>
+                We assess counseling quality with the Cognitive Therapy Rating Scale (CTRS, scored 0 to 6) and
+                therapeutic alliance with the Working Alliance Inventory (WAI, scored 1 to 7), both rated by
+                GPT-4o as an LLM judge across sessions generated by Psych8k, CACTUS, and MAGneT.
+            </p>
+        </div>
+        <div class="results-table-wrapper">
+            <table class="table is-bordered">
+                <thead>
+                <tr>
+                    <th rowspan="2">Method</th>
+                    <th colspan="3">CTRS, general</th>
+                    <th colspan="3">CTRS, CBT-specific</th>
+                    <th colspan="3">WAI</th>
+                </tr>
+                <tr>
+                    <th>Underst.</th><th>Interp. eff.</th><th>Collab.</th>
+                    <th>Guided disc.</th><th>Focus</th><th>Strategy</th>
+                    <th>Task</th><th>Goal</th><th>Bond</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>Psych8k</td><td>3.90</td><td>4.10</td><td>3.13</td><td>3.80</td><td>3.35</td><td>2.59</td><td>4.86</td><td>4.73</td><td>4.93</td></tr>
+                <tr><td>CACTUS</td><td>3.84</td><td>3.94</td><td>3.09</td><td>3.74</td><td>3.37</td><td>2.83</td><td>4.69</td><td>4.39</td><td>4.65</td></tr>
+                <tr class="best-row"><td><strong>MAGneT</strong></td><td><strong>3.98</strong></td><td><strong>4.30</strong></td><td><strong>3.43</strong></td><td><strong>4.08</strong></td><td><strong>3.76</strong></td><td><strong>2.93</strong></td><td><strong>4.94</strong></td><td><strong>4.78</strong></td><td><strong>5.01</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content">
+            <p>
+                MAGneT improves general counseling skills by 3.2% and CBT-specific skills by 4.3% on average on
+                CTRS over the strongest baseline, and achieves the highest WAI scores on Task, Goal, and Bond.
+                On PANAS, MAGneT induces the largest positive-emotion shift for positive- and neutral-attitude
+                clients, though like CACTUS it trails slightly on negative-attitude clients.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Downstream fine-tuning -->
+<section class="section">
+    <div class="container is-max-desktop">
+        <h3 class="title is-3 has-text-left mb-6">Fine-tuning on MAGneT data yields better counselor models</h3>
+        <div class="content has-text-left">
+            <p>
+                We fine-tune Llama3-8B-Instruct separately on the (dialogue history, counselor response) pairs
+                from sessions generated by Psych8k, CACTUS, and MAGneT, then evaluate each fine-tuned model on
+                held-out client profiles using CTRS.
+            </p>
+        </div>
+        <div class="results-table-wrapper">
+            <table class="table is-bordered">
+                <thead>
+                <tr>
+                    <th rowspan="2">Fine-tuned on</th>
+                    <th colspan="3">CTRS, general</th>
+                    <th colspan="3">CTRS, CBT-specific</th>
+                </tr>
+                <tr>
+                    <th>Underst.</th><th>Interp. eff.</th><th>Collab.</th>
+                    <th>Guided disc.</th><th>Focus</th><th>Strategy</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>Psych8k</td><td>3.71</td><td>3.83</td><td>2.91</td><td>3.65</td><td>3.16</td><td>2.44</td></tr>
+                <tr><td>CACTUS</td><td>3.48</td><td>3.67</td><td>2.65</td><td>3.37</td><td>2.99</td><td>2.45</td></tr>
+                <tr class="best-row"><td><strong>MAGneT</strong></td><td><strong>3.95</strong></td><td><strong>4.32</strong></td><td><strong>3.32</strong></td><td><strong>4.03</strong></td><td><strong>3.60</strong></td><td><strong>2.96</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content">
+            <p>
+                Llama-MAGneT improves general counseling skills by 6.3% and CBT-specific skills by 7.3% on
+                average on CTRS over the strongest baseline. Ablations show that removing the Technique Agent
+                degrades both general and CBT-specific CTRS broadly, showing dynamic technique selection matters
+                across the board, while removing the CBT Agent has little effect on Understanding or
+                Interpersonal Effectiveness but sharply hurts Guided Discovery and Focus, the two skills most
+                dependent on a session-level plan. Removing both agents gives the lowest scores of any ablation.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@misc{mandal2025magnetcoordinatedmultiagentgeneration,
+      title={MAGneT: Coordinated Multi-Agent Generation of Synthetic Multi-Turn Mental Health Counseling Sessions},
+      author={Aishik Mandal and Tanmoy Chakraborty and Iryna Gurevych},
+      year={2025},
+      eprint={2509.04183},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.04183},
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content has-text-centered">
+                    <p>
+                        This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
+                        which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
