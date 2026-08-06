@@ -7,6 +7,12 @@
 For any questions contact: [Aishik Mandal](mailto:aishik.mandal@tu-darmstadt.de) <br>
 [UKP Lab](https://www.informatik.tu-darmstadt.de/ukp/ukp_home/index.en.jsp) | [TU Darmstadt](https://www.tu-darmstadt.de/) 
 
+## Paper and Webpage
+
+📄 [Paper](https://arxiv.org/abs/2509.04183)
+<br>
+🌐 [Webpage](https://ukplab.github.io/arxiv2025-magnet/)
+
 ## Dataset and Model
 Our dataset and model can be dowloaded [here](https://huggingface.co/collections/UKPLab/magnet). The dataset can also be downloaded at [TUdatalib](https://tudatalib.ulb.tu-darmstadt.de/handle/tudatalib/5072)
 
