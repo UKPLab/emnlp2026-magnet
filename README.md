@@ -11,7 +11,7 @@ For any questions contact: [Aishik Mandal](mailto:aishik.mandal@tu-darmstadt.de)
 
 📄 [Paper](https://arxiv.org/abs/2509.04183)
 <br>
-🌐 [Webpage](https://ukplab.github.io/arxiv2025-magnet/)
+🌐 [Webpage](https://ukplab.github.io/emnlp2026-magnet/)
 
 ## Dataset and Model
 Our dataset and model can be dowloaded [here](https://huggingface.co/collections/UKPLab/magnet). The dataset can also be downloaded at [TUdatalib](https://tudatalib.ulb.tu-darmstadt.de/handle/tudatalib/5072)
